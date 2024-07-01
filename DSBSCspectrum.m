@@ -1,0 +1,15 @@
+clc;
+clear all;
+close all;
+Fs=100;
+t=[0:2*Fs+1]'/Fs;
+x=sin(2*pi*2*t);
+Fc=10;
+Ac=1;
+y=ammod(x,Fc,Fs,3.142,0);
+z=fft(y);
+z=abs(z(1:length(z)/2+1));
+frq=[0:length(z)-1]*Fs/length(z)/2;
+figure;
+plot(frq,z);
+title('spectrum');
